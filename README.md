@@ -1,6 +1,6 @@
 # Projetos e exercícios do Curso de Engenharia de Dados da Ada Tech - Santander Coders 2023
 
-# [Projeto Fina]
+# [Projeto Final]
 Referente a cada Módulo do Curso:
 ```
 - Lógica de Programação II (Python)
