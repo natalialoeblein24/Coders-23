@@ -1,0 +1,240 @@
+ 2024-03-09 20:37:53 | INFO | utils:wrapper:54 | Chamando função extract com argumentos: ('mkechinov/ecommerce-events-history-in-cosmetics-shop', '../data/'), kwargs: {} utils.py
+ 2024-03-09 20:39:00 | INFO | utils:wrapper:54 | Função extract retornou: 0 utils.py
+ 2024-03-09 20:39:00 | INFO | utils:wrapper:56 | Função extract demorou 66.49945425987244 segundos para ser executada utils.py
+ 2024-03-09 20:39:00 | INFO | main:<module>:10 | Chamando função unite_pl com argumentos: ('../data/',), kwargs: {} main.py
+ 2024-03-09 20:39:26 | INFO | utils:wrapper:56 | Função unite_pl demorou 25.65886664390564 segundos para ser executada utils.py
+ 2024-03-09 20:39:26 | INFO | main:<module>:10 | Função unite_pl retornou: None main.py
+ 2024-03-11 19:30:37 | INFO | utils:wrapper:54 | Chamando função extract com argumentos: ('unanimad/corona-virus-brazil', '../data/'), kwargs: {} utils.py
+ 2024-03-11 19:30:40 | INFO | utils:wrapper:54 | Função extract retornou: 1 utils.py
+ 2024-03-11 19:30:40 | INFO | utils:wrapper:56 | Função extract demorou 2.2417831420898438 segundos para ser executada utils.py
+ 2024-03-11 19:30:40 | INFO | main:<module>:10 | Chamando função unite_pl com argumentos: ('../data/',), kwargs: {} main.py
+ 2024-03-11 19:30:40 | ERROR | main:<module>:10 | Exceção ao chamar a função unite_pl: no matching files found in ../data//*.csv main.py
+Traceback (most recent call last):
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\main.py", line 10, in <module>
+    unite_pl("../data/")
+    └ <function unite_pl at 0x0000022C4206D300>
+
+> File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\decorators\utils.py", line 38, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('../data/',)
+             └ <function unite_pl at 0x0000022C4206D260>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\decorators\utils.py", line 54, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('../data/',)
+             └ <function unite_pl at 0x0000022C4206D080>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\unite.py", line 8, in unite_pl
+    pl.scan_csv(f"{data_path}/*.csv").sink_parquet(
+    │  └ <function scan_csv at 0x0000022C4223F4C0>
+    └ <module 'polars' from 'C:\\Users\\levy.marques\\Desktop\\proj\\kaggle_extract\\.venv\\Lib\\site-packages\\polars\\__init__.py'>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\_utils\deprecation.py", line 134, in wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ('../data//*.csv',)
+           └ <function scan_csv at 0x0000022C4223F420>
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\_utils\deprecation.py", line 134, in wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ('../data//*.csv',)
+           └ <function scan_csv at 0x0000022C4223F560>
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\_utils\deprecation.py", line 134, in wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ('../data//*.csv',)
+           └ <function scan_csv at 0x0000022C4223F380>
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\io\csv\functions.py", line 947, in scan_csv
+    return pl.LazyFrame._scan_csv(
+           │  │         └ <classmethod(<function LazyFrame._scan_csv at 0x0000022C422D37E0>)>
+           │  └ <class 'polars.lazyframe.frame.LazyFrame'>
+           └ <module 'polars._reexport' from 'C:\\Users\\levy.marques\\Desktop\\proj\\kaggle_extract\\.venv\\Lib\\site-packages\\polars\\_...
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\lazyframe\frame.py", line 383, in _scan_csv
+    self._ldf = PyLazyFrame.new_from_csv(
+    │           │           └ <staticmethod(<built-in method new_from_csv of type object at 0x0000022C406BF720>)>
+    │           └ <class 'builtins.PyLazyFrame'>
+    └ <unprintable LazyFrame object>
+
+polars.exceptions.ComputeError: no matching files found in ../data//*.csv
+ 2024-03-11 19:31:45 | INFO | utils:wrapper:54 | Chamando função extract com argumentos: ('unanimad/corona-virus-brazil', '../data/'), kwargs: {} utils.py
+ 2024-03-11 19:31:57 | INFO | utils:wrapper:54 | Função extract retornou: 0 utils.py
+ 2024-03-11 19:31:57 | INFO | utils:wrapper:56 | Função extract demorou 12.35291314125061 segundos para ser executada utils.py
+ 2024-03-11 19:31:57 | INFO | main:<module>:10 | Chamando função unite_pl com argumentos: ('../data/',), kwargs: {} main.py
+ 2024-03-11 19:31:58 | ERROR | main:<module>:10 | Exceção ao chamar a função unite_pl: could not parse `"1,406"` as dtype `i64` at column 'cases' (column number 6)
+
+The current offset in the file is 34697 bytes.
+
+You might want to try:
+- increasing `infer_schema_length` (e.g. `infer_schema_length=10000`),
+- specifying correct dtype with the `dtypes` argument
+- setting `ignore_errors` to `True`,
+- adding `"1,406"` to the `null_values` list.
+
+Original error: ```remaining bytes non-empty``` main.py
+Traceback (most recent call last):
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\main.py", line 10, in <module>
+    unite_pl("../data/")
+    └ <function unite_pl at 0x000001E3CA6937E0>
+
+> File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\decorators\utils.py", line 38, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('../data/',)
+             └ <function unite_pl at 0x000001E3CA6936A0>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\decorators\utils.py", line 54, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('../data/',)
+             └ <function unite_pl at 0x000001E3CA693560>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\unite.py", line 8, in unite_pl
+    pl.scan_csv(f"{data_path}/*.csv").sink_parquet(
+    │  └ <function scan_csv at 0x000001E3CA8244A0>
+    └ <module 'polars' from 'C:\\Users\\levy.marques\\Desktop\\proj\\kaggle_extract\\.venv\\Lib\\site-packages\\polars\\__init__.py'>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\_utils\unstable.py", line 59, in wrapper
+    return function(*args, **kwargs)
+           │         │       └ {'compression': 'snappy'}
+           │         └ (<LazyFrame [6 cols, {"state_code": Int64 … "capital": Boolean}] at 0x1E3CBA39E50>, '../data//events.parquet')
+           └ <function LazyFrame.sink_parquet at 0x000001E3CB91B9C0>
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\lazyframe\frame.py", line 2188, in sink_parquet
+    return lf.sink_parquet(
+           │  └ <method 'sink_parquet' of 'builtins.PyLazyFrame' objects>
+           └ <builtins.PyLazyFrame object at 0x000001E3CB9C8770>
+
+polars.exceptions.ComputeError: could not parse `"1,406"` as dtype `i64` at column 'cases' (column number 6)
+
+The current offset in the file is 34697 bytes.
+
+You might want to try:
+- increasing `infer_schema_length` (e.g. `infer_schema_length=10000`),
+- specifying correct dtype with the `dtypes` argument
+- setting `ignore_errors` to `True`,
+- adding `"1,406"` to the `null_values` list.
+
+Original error: ```remaining bytes non-empty```
+ 2024-03-11 19:32:36 | INFO | utils:wrapper:54 | Chamando função extract com argumentos: ('unanimad/corona-virus-brazil', '../data/'), kwargs: {} utils.py
+ 2024-03-11 19:32:45 | INFO | utils:wrapper:54 | Função extract retornou: 0 utils.py
+ 2024-03-11 19:32:45 | INFO | utils:wrapper:56 | Função extract demorou 9.843812465667725 segundos para ser executada utils.py
+ 2024-03-11 19:32:45 | INFO | main:<module>:10 | Chamando função unite_pl com argumentos: ('../data/',), kwargs: {} main.py
+ 2024-03-11 19:32:46 | ERROR | main:<module>:10 | Exceção ao chamar a função unite_pl: could not parse `"1,406"` as dtype `i64` at column 'cases' (column number 6)
+
+The current offset in the file is 34697 bytes.
+
+You might want to try:
+- increasing `infer_schema_length` (e.g. `infer_schema_length=10000`),
+- specifying correct dtype with the `dtypes` argument
+- setting `ignore_errors` to `True`,
+- adding `"1,406"` to the `null_values` list.
+
+Original error: ```remaining bytes non-empty``` main.py
+Traceback (most recent call last):
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\main.py", line 10, in <module>
+    unite_pl("../data/")
+    └ <function unite_pl at 0x0000026684ED37E0>
+
+> File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\decorators\utils.py", line 38, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('../data/',)
+             └ <function unite_pl at 0x0000026684ED36A0>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\decorators\utils.py", line 54, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('../data/',)
+             └ <function unite_pl at 0x0000026684ED3560>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\etl\unite.py", line 8, in unite_pl
+    pl.scan_csv(f"{data_path}/*.csv").sink_parquet(
+    │  └ <function scan_csv at 0x00000266850644A0>
+    └ <module 'polars' from 'C:\\Users\\levy.marques\\Desktop\\proj\\kaggle_extract\\.venv\\Lib\\site-packages\\polars\\__init__.py'>
+
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\_utils\unstable.py", line 59, in wrapper
+    return function(*args, **kwargs)
+           │         │       └ {'compression': 'snappy'}
+           │         └ (<LazyFrame [6 cols, {"state_code": Int64 … "capital": Boolean}] at 0x26686267190>, '../data//events.parquet')
+           └ <function LazyFrame.sink_parquet at 0x000002668615B9C0>
+  File "C:\Users\levy.marques\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\lazyframe\frame.py", line 2188, in sink_parquet
+    return lf.sink_parquet(
+           │  └ <method 'sink_parquet' of 'builtins.PyLazyFrame' objects>
+           └ <builtins.PyLazyFrame object at 0x0000026686208770>
+
+polars.exceptions.ComputeError: could not parse `"1,406"` as dtype `i64` at column 'cases' (column number 6)
+
+The current offset in the file is 34697 bytes.
+
+You might want to try:
+- increasing `infer_schema_length` (e.g. `infer_schema_length=10000`),
+- specifying correct dtype with the `dtypes` argument
+- setting `ignore_errors` to `True`,
+- adding `"1,406"` to the `null_values` list.
+
+Original error: ```remaining bytes non-empty```
+ 2024-03-15 17:41:11 | INFO | utils:wrapper:54 | Chamando função extract com argumentos: ('unanimad/corona-virus-brazil', '../data/'), kwargs: {} utils.py
+ 2024-03-15 17:41:13 | INFO | utils:wrapper:54 | Função extract retornou: 1 utils.py
+ 2024-03-15 17:41:13 | INFO | utils:wrapper:56 | Função extract demorou 2.5608129501342773 segundos para ser executada utils.py
+ 2024-03-15 17:41:13 | INFO | main:<module>:10 | Chamando função unite_pl com argumentos: ('../data/',), kwargs: {} main.py
+ 2024-03-15 17:41:13 | ERROR | main:<module>:10 | Exceção ao chamar a função unite_pl: no matching files found in ../data//*.csv main.py
+Traceback (most recent call last):
+
+  File "C:\Users\levyv\Desktop\proj\kaggle_extract\etl\main.py", line 10, in <module>
+    unite_pl("../data/")
+    └ <function unite_pl at 0x000001670DA4CC20>
+
+> File "C:\Users\levyv\Desktop\proj\kaggle_extract\etl\decorators\utils.py", line 38, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('../data/',)
+             └ <function unite_pl at 0x000001670DA4CD60>
+
+  File "C:\Users\levyv\Desktop\proj\kaggle_extract\etl\decorators\utils.py", line 54, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('../data/',)
+             └ <function unite_pl at 0x000001670DA4CA40>
+
+  File "C:\Users\levyv\Desktop\proj\kaggle_extract\etl\unite.py", line 8, in unite_pl
+    pl.scan_csv(f"{data_path}/*.csv").sink_parquet(
+    │  └ <function scan_csv at 0x000001670EB1A200>
+    └ <module 'polars' from 'C:\\Users\\levyv\\Desktop\\proj\\kaggle_extract\\.venv\\Lib\\site-packages\\polars\\__init__.py'>
+
+  File "C:\Users\levyv\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\_utils\deprecation.py", line 134, in wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ('../data//*.csv',)
+           └ <function scan_csv at 0x000001670EB1A160>
+  File "C:\Users\levyv\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\_utils\deprecation.py", line 134, in wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ('../data//*.csv',)
+           └ <function scan_csv at 0x000001670EB1A2A0>
+  File "C:\Users\levyv\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\_utils\deprecation.py", line 134, in wrapper
+    return function(*args, **kwargs)
+           │         │       └ {}
+           │         └ ('../data//*.csv',)
+           └ <function scan_csv at 0x000001670EB1A0C0>
+  File "C:\Users\levyv\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\io\csv\functions.py", line 947, in scan_csv
+    return pl.LazyFrame._scan_csv(
+           │  │         └ <classmethod(<function LazyFrame._scan_csv at 0x000001670EDA2700>)>
+           │  └ <class 'polars.lazyframe.frame.LazyFrame'>
+           └ <module 'polars._reexport' from 'C:\\Users\\levyv\\Desktop\\proj\\kaggle_extract\\.venv\\Lib\\site-packages\\polars\\_reexpor...
+  File "C:\Users\levyv\Desktop\proj\kaggle_extract\.venv\Lib\site-packages\polars\lazyframe\frame.py", line 383, in _scan_csv
+    self._ldf = PyLazyFrame.new_from_csv(
+    │           │           └ <staticmethod(<built-in method new_from_csv of type object at 0x000001670C93FDB0>)>
+    │           └ <class 'builtins.PyLazyFrame'>
+    └ <unprintable LazyFrame object>
+
+polars.exceptions.ComputeError: no matching files found in ../data//*.csv
+ 2024-03-15 17:41:58 | INFO | utils:wrapper:54 | Chamando função extract com argumentos: ('unanimad/corona-virus-brazil', '../data/'), kwargs: {} utils.py
+ 2024-03-15 17:42:00 | INFO | utils:wrapper:54 | Função extract retornou: 1 utils.py
+ 2024-03-15 17:42:00 | INFO | utils:wrapper:56 | Função extract demorou 2.345020294189453 segundos para ser executada utils.py
+ 2024-03-15 17:42:34 | INFO | utils:wrapper:54 | Chamando função extract com argumentos: ('unanimad/corona-virus-brazil', '../data/'), kwargs: {} utils.py
+ 2024-03-15 17:42:42 | INFO | utils:wrapper:54 | Função extract retornou: 0 utils.py
+ 2024-03-15 17:42:42 | INFO | utils:wrapper:56 | Função extract demorou 8.076979398727417 segundos para ser executada utils.py
