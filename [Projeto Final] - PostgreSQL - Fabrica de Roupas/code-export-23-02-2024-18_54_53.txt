@@ -1,0 +1,87 @@
+telemetry { //condicoes-de-uso
+  id pk
+  machine_id int fk
+  datetime timestamp
+  volt float
+  rotate float
+  pressure float
+  vibration float
+}
+
+component {
+  id int pk
+  type string
+  description string
+}
+
+error_machine {
+  id int pk
+  type string
+  description string
+}
+
+register_error {
+  id int pk
+  datetime timestamp
+  machine_id int fk
+  error_id int fk
+}
+
+failure {
+  id int pk
+  datetime timestamp
+  machine_id int fk
+  comp_id int fk
+}
+
+maintenance {
+  id int pk
+  datetime timestamp
+  machine_id int fk
+  comp_id int fk
+}
+
+machine {
+  id int pk
+  age int
+  model_id int fk
+  location_id int fk
+  brand_id int fk
+}
+
+brand {
+  id int pk
+  name string
+}
+
+location {
+  id int pk
+  description string
+}
+
+model {
+  id int pk
+  type string
+  description string
+  engine_size int
+}
+
+// telemetry_machine {
+//   id int
+//   telemetry_id int
+//   machine_id
+// }
+
+model.id < machine.model_id
+location.id < machine.location_id
+brand.id < machine.brand_id
+telemetry.machine_id <> machine.id //??????????
+
+error_machine.id < register_error.error_id
+register_error.machine_id > machine.id
+
+failure.machine_id > machine.id
+failure.comp_id > component.id
+
+maintenance.machine_id > machine.id
+maintenance.comp_id > component.id
